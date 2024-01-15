@@ -1,0 +1,31 @@
+.aside {
+  width: 30%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 1px 1px 10px rgb(204, 204, 204);
+  border-radius: 5px;
+  padding: 20px;
+  &__label {
+    padding-left: 1.4em;
+    & input {
+      appearance: none;
+      position: absolute;
+      &:checked + .aside__label-checkbox {
+        background-image: url('../../image/CheckboxChecked.svg');
+      }
+    }
+    &-checkbox {
+      position: absolute;
+      width: 1.3em;
+      height: 1.3em;
+      margin-left: -1.4em;
+      background-repeat: no-repeat;
+      background-image: url('../../image/Checkbox.svg');
+    }
+  }
+  &__title {
+    font-weight: 600;
+  }
+}

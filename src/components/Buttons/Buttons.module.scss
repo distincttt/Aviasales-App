@@ -1,0 +1,30 @@
+.buttons {
+  width: 100%;
+
+  &__button {
+    width: 50%;
+    height: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 20px;
+    text-transform: uppercase;
+    background-color: #fff;
+    border: 1px solid rgb(226, 226, 226);
+    &:first-child {
+      border-radius: 10px 0 0 10px;
+    }
+    &:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+    &:hover {
+      background-color: #a3c8dd;
+      cursor: pointer;
+    }
+    &:active,
+    &:focus {
+      background-color: #2196f3;
+      color: #fff;
+    }
+  }
+}
