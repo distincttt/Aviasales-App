@@ -3,8 +3,6 @@ import { add, format } from 'date-fns'
 import classes from './Ticket.module.scss'
 
 export default function Ticket({ ticket }) {
-  // console.log(ticket.carrier)
-
   let stopThere = ''
   let stopBack = ''
   if (ticket.segments[0].stops.length) {

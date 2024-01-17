@@ -1,24 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
-import { checkedUpdate } from '../Redux/action'
+import { checkedUpdate } from '../Redux/checkboxSlice'
 
 import classes from './Aside.module.scss'
 
 export default function Aside() {
-  const checkboxArray = useSelector((state) => state.checkboxReducer)
+  const checkboxArray = useSelector((state) => state.checkboxSlice)
   const dispatch = useDispatch()
 
   const handleChange = (key) => {
-    if (key === 'Все') dispatch(checkedUpdate('CHECK_ALL', key))
+    if (key === 'Все') dispatch(checkedUpdate({ type: 'CHECK_ALL' }))
     if (key === '1 пересадка' || key === '2 пересадки' || key === '3 пересадки' || key === 'Без пересадок') {
-      dispatch(checkedUpdate('CHECK', key))
+      dispatch(checkedUpdate({ type: 'CHECK', key }))
     }
   }
   useEffect(() => {
     if (!Object.values(checkboxArray).slice(1).includes(false) && !checkboxArray['Все'])
-      dispatch(checkedUpdate('CHECK_FOUR'))
+      dispatch(checkedUpdate({ type: 'CHECK_FOUR' }))
   }, [checkboxArray])
+
   return (
     <aside className={classes.aside}>
       <span className={classes['aside__title']}>КОЛИЧЕСТВО ПЕРЕСАДОК</span>

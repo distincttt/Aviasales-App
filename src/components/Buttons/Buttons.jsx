@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { ticketsSort } from '../Redux/action'
+import { ticketsSave } from '../Redux/ticketsSlice'
 
 import classes from './Buttons.module.scss'
 
 export default function Buttons() {
   const tickets = useSelector((state) => {
-    return state.ticketsReducer.tickets
+    return state.ticketsSlice.tickets
   })
   let ticketsSortArr = [...tickets]
 
@@ -14,8 +14,7 @@ export default function Buttons() {
 
   const clickPrice = () => {
     ticketsSortArr = ticketsSortArr.sort((el1, el2) => el1.price - el2.price)
-    console.log(ticketsSort)
-    dispatch(ticketsSort(ticketsSortArr))
+    dispatch(ticketsSave({ ticketsSortArr }))
   }
   const clickFast = () => {
     ticketsSortArr = ticketsSortArr.sort((el1, el2) => {
@@ -23,7 +22,7 @@ export default function Buttons() {
       const duration2 = el2.segments[0].duration + el2.segments[1].duration
       return duration1 - duration2
     })
-    dispatch(ticketsSort(ticketsSortArr))
+    dispatch(ticketsSave({ ticketsSortArr }))
   }
 
   return (

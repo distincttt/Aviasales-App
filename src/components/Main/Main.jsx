@@ -5,18 +5,18 @@ import { LoadingOutlined } from '@ant-design/icons'
 
 import Buttons from '../Buttons/Buttons'
 import Ticket from '../Ticket/Ticket'
-import { ticketsLoad } from '../Redux/action'
+import { ticketsLoad } from '../Redux/ticketsSlice'
 
 import classes from './Main.module.scss'
 
 export default function Main() {
   const tickets = useSelector((state) => {
-    return state.ticketsReducer.tickets
+    return state.ticketsSlice.tickets
   })
   let { loading, error } = useSelector((state) => {
-    return state.appReducer
+    return state.ticketsSlice
   })
-  const checkboxes = useSelector((state) => state.checkboxReducer)
+  const checkboxes = useSelector((state) => state.checkboxSlice)
 
   const dispatch = useDispatch()
 
@@ -39,13 +39,11 @@ export default function Main() {
   useEffect(() => {
     dispatch(ticketsLoad())
   }, [])
-  console.log(tickets)
+
   return (
     <main className={classes.main}>
       <Buttons />
-      {!tickets.length && loading && (
-        <Spin style={{ marginTop: 30 }} indicator={<LoadingOutlined style={{ fontSize: 200 }} spin />} />
-      )}
+      {loading && <Spin style={{ marginTop: 30 }} indicator={<LoadingOutlined style={{ fontSize: 200 }} spin />} />}
       {Boolean(!error) &&
         ticketsFiltered.map((el, i) => {
           return <Ticket key={i} ticket={el} />

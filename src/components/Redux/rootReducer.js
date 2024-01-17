@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { checkboxReducer } from './checkboxReducer'
-import { ticketsReducer } from './ticketsReducer'
-import { appReducer } from './appReducer'
+import checkboxSlice from './checkboxSlice'
+import ticketsSlice from './ticketsSlice'
 
-export const rootReducer = combineReducers({ checkboxReducer, ticketsReducer, appReducer })
+export const rootReducer = combineReducers({ checkboxSlice, ticketsSlice })
