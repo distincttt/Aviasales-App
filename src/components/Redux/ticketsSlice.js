@@ -37,7 +37,6 @@ const ticketsSlice = createAppSlice({
           state.loading = true
         },
         fulfilled: (state, action) => {
-          state.loading = false
           state.stop = action.payload.stop
           state.tickets.push(...action.payload.tickets)
         },
